@@ -2,7 +2,7 @@
 
 This simple addon adds a new page under `/calculators/dread` for you to perform DREAD score calculations:
 
-!(https://cloud.githubusercontent.com/assets/53006/3952474/9ce4adf0-26e2-11e4-9400-c03c6f28a89c.png)
+![](https://cloud.githubusercontent.com/assets/53006/3952474/9ce4adf0-26e2-11e4-9400-c03c6f28a89c.png)
 
 DREAD stands for (D)amage, (R)eproducibility, (E)xploitability, (A)ffected users, (D)iscoverability and is a common risk assessment model [introduced by Microsoft])http://blogs.msdn.com/b/david_leblanc/archive/2007/08/13/dreadful.aspx).
 
