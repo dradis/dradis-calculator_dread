@@ -6,6 +6,9 @@ module Dradis::Plugins::Calculators::DREAD
     provides :addon
     description 'Provides a DREAD score calculator under /calculators/dread'
 
+    initializer 'calculator_dread.asset_precompile_paths' do |app|
+      app.config.assets.precompile += ["dradis/plugins/calculators/dread/manifests/*"]
+    end
 
     initializer "calculator_dread.inflections" do |app|
       ActiveSupport::Inflector.inflections do |inflect|
