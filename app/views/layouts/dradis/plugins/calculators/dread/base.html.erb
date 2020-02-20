@@ -9,25 +9,22 @@
   </head>
   <body class="authenticated">
     <div class="container">
-      <div class="navbar">
-        <div class="navbar-inner">
-          <a href="javascript:void(0)" class="brand">DREAD score calculator</a>
-          <ul class="nav pull-right">
-            <li>
-              <%= link_to main_app.root_path do %>
-              Back to the app  &rarr;
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+      <nav class="navbar navbar-light bg-light">
+        <a href="javascript:void(0)" class="navbar-brand">DREAD score calculator</a>
+        <ul class="navbar-nav pull-right">
+          <li class="nav-item">
+            <%= link_to main_app.root_path, class: 'nav-link' do %>
+            Back to the app  &rarr;
+            <% end %>
+          </li>
+        </ul>
+      </nav>
       <%= yield%>
     </div>
 
-<div class="well">
-  <%= debug main_app.methods(false).sort %>
-</div>
+    <div class="card d-none">
+      <%= debug main_app.methods(false).sort %>
+    </div>
     <%= javascript_include_tag 'dradis/plugins/calculators/dread/manifests/application', 'data-turbolinks-track' => true %>
   </body>
 </html>
