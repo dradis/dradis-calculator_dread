@@ -5,228 +5,45 @@
 <p class="lead">Use this page to calculate the <abbr title="Damage potential, Reproducibility, Exploitability, Affected Users, Discoverability">DREAD</abbr> score of a given finding.</p>
 
 <div class="row">
-  <div class="span4">
+  <div class="col-8">
     <h2>Impact score: <span id="impact-score">0</span></h2>
-    <p class="lead text-center">Impact = (Damage + Affected)/2</p>
+    <%= render 'dradis/plugins/calculators/dread/base/impact' %>
 
-    <h3>Damage Potential</h3>
-    <p>If a vulnerability exploit occurs, how much damage will be caused?</p>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Sens. Data</th>
-          <th>Infra.</th>
-          <th>Phys. access</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input type="radio" name="damage" value="0" checked /> 0
-          </td>
-          <td colspan="3">
-            Information leakage that could lead to compromise of sensitive data or systems
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="radio" name="damage" value="1"/> 1
-          </td>
-          <td colspan="3">
-            The presence of this vulnerability contributes to other vulnerabilities being exploited
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="radio" name="damage" value="2"/> 2
-          </td>
-          <td colspan="2">
-            Sensitive data compromised
-          </td>
-          <td>
-            Access to places with no critical systems
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="radio" name="damage" value="3"/> 3
-          </td>
-          <td colspan="2">
-            3	User account compromised	System completely compromised
-          </td>
-          <td>
-            Access to places with critical systems
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="alert alert-error"><strong>NOTE</strong>: If vulnerability violates PCI compliance it is automatically marked as 3</p>
-
-    <h3>Affected users or systems</h3>
-    <p>How many users or systems will be affected if the vulnerability is exploited?</p>
-
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <td><input type="radio" name="affected" value="0" checked/> 0</td>
-          <td>None</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="affected" value="1"/> 1</td>
-          <td>Less than half of the systems/users are affected</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="affected" value="2"/> 2</td>
-          <td>More than half of the systems/users are affected</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="affected" value="3"/> 3</td>
-          <td>All systems or users are affected</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="span4">
     <h2>Likelihood score: <span id="likelihood-score">0</span></h2>
-    <p class="lead text-center">Likelihood = (Repro + Exploit + Disc)/3</p>
-
-    <h3>Reproducibility</h3>
-    <p>What kind of access is necessary to exploit this vulnerability?</p>
-
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <td><input type="radio" name="repro" value="0" checked/> 0</td>
-          <td>Physical access to target machine</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="repro" value="1"/> 1</td>
-          <td>Valid credentials to the system</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="repro" value="2"/> 2</td>
-          <td>Same network as the victim</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="repro" value="3"/> 3</td>
-          <td>Internet access with no credentials</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Exploitability</h3>
-    <p>What is needed to exploit this vulnerability?</p>
-
-    <table class="table table-striped">
-      <tbody>
-
-        <tr>
-          <td><input type="radio" name="exploit" value="0" checked/> 0</td>
-          <td>
-            <ul>
-              <li>Advanced programming and networking knowledge</li>
-              <li>Custom or advanced attack tools</li>
-              <li>Depends on other vulnerabilities being present which have not been discovered</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="exploit" value="1"/> 1</td>
-          <td>Requires victim’s intervention, possibly through social engineering</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="exploit" value="2"/> 2</td>
-          <td>
-            <ul>
-              <li>Tool or malware is available on the Internet</li>
-              <li>Exploit is easily performed</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="exploit" value="3"/> 3</td>
-          <td>Just a web browser or no tools necessary</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Discoverability</h3>
-    <p>How easy is it to discover and exploit this vulnerability?</p>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Difficulty</th>
-          <th>Equivalent threat agent</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input type="radio" name="disc" value="0" checked data-agent="Organized crime, inside job"/> 0</td>
-          <td>Very hard to impossible; requires source code, administrative access or classified information</td>
-          <td>Organized crime, inside job</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="disc" value="1" data-agent="Motivated attacker"/> 1</td>
-          <td>Hard; requires partial knowledge of internal structure, or involves guessing</td>
-          <td>Motivated attacker</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="disc" value="2" data-agent="Script kiddie, curious attacker"/> 2</td>
-          <td>Medium; details of faults like this are already in public domain and can be easily discovered using a search engine</td>
-          <td>Script kiddie, curious attacker</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="disc" value="3" data-agent="Automated malware, accidental discovery"/> 3</td>
-          <td>Low; information is visible in a browser address bar, form, or readily visible or accessible in case of physical vulnerabilities</td>
-          <td>Automated malware, accidental discovery</td>
-        </tr>
-      </tbody>
-    </table>
+    <%= render 'dradis/plugins/calculators/dread/base/likelihood' %>
   </div>
 
-  <div class="span4">
+  <div class="col-4">
     <h2>DREAD score: <span id="dread-score">0</span></h2>
     <p class="lead text-center">DREAD = (Impact + Likelihood)/2</p>
-<pre id="blob">#[DreadValue]#
+    <textarea class="form-control" name="dread_fields" rows="28" style="width:95%">#[DreadValue]#
 N/A
-
 
 #[Damage]#
 N/A
 
-
 #[AffectedSystems]#
 N/A
-
 
 #[Impact]#
 N/A
 
-
 #[Reproducibility]#
 N/A
-
 
 #[Discoverability]#
 N/A
 
-
 #[ThreatAgent]#
 N/A
-
 
 #[Exploitability]#
 N/A
 
-
 #[Likelihood]#
 N/A
-</pre>
+
+
+</textarea>
   </div>
 </div>

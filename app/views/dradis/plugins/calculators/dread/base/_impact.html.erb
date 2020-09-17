@@ -1,0 +1,83 @@
+<section data-behavior="dread-buttons">
+  <p class="lead text-center">Impact = (Damage + Affected)/2</p>
+
+  <h3>Damage Potential</h3>
+  <p>If a vulnerability exploit occurs, how much damage will be caused?</p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Sens. Data</th>
+        <th>Infra.</th>
+        <th>Phys. access</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input type="radio" name="damage" value="0" <%= 'checked' if @dread_vector['D'] == 0 %>/> 0
+        </td>
+        <td colspan="3">
+          Information leakage that could lead to compromise of sensitive data or systems
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" name="damage" value="1" <%= 'checked' if @dread_vector['D'] == 1 %>/> 1
+        </td>
+        <td colspan="3">
+          The presence of this vulnerability contributes to other vulnerabilities being exploited
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" name="damage" value="2" <%= 'checked' if @dread_vector['D'] == 2 %>/> 2
+        </td>
+        <td colspan="2">
+          Sensitive data compromised
+        </td>
+        <td>
+          Access to places with no critical systems
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" name="damage" value="3" <%= 'checked' if @dread_vector['D'] == 3 %>/> 3
+        </td>
+        <td colspan="2">
+          User account compromised	System completely compromised
+        </td>
+        <td>
+          Access to places with critical systems
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="alert alert-warning"><strong>NOTE</strong>: If vulnerability violates PCI compliance it is automatically marked as 3</p>
+
+  <h3>Affected users or systems</h3>
+  <p>How many users or systems will be affected if the vulnerability is exploited?</p>
+
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td><input type="radio" name="affected" value="0" <%= 'checked' if @dread_vector['A'] == 0 %>/> 0</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="affected" value="1" <%= 'checked' if @dread_vector['A'] == 1 %>/> 1</td>
+        <td>Less than half of the systems/users are affected</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="affected" value="2" <%= 'checked' if @dread_vector['A'] == 2 %>/> 2</td>
+        <td>More than half of the systems/users are affected</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="affected" value="3" <%= 'checked' if @dread_vector['A'] == 3 %>/> 3</td>
+        <td>All systems or users are affected</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

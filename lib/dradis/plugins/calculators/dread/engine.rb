@@ -4,7 +4,7 @@ module Dradis::Plugins::Calculators::DREAD
 
     include Dradis::Plugins::Base
     provides :addon
-    description 'Provides a DREAD score calculator under /calculators/dread'
+    description 'Risk Calculators: DREAD'
 
     initializer 'calculator_dread.asset_precompile_paths' do |app|
       app.config.assets.precompile += ["dradis/plugins/calculators/dread/manifests/*"]
@@ -18,7 +18,7 @@ module Dradis::Plugins::Calculators::DREAD
 
     initializer 'calculator_dread.mount_engine' do
       Rails.application.routes.append do
-        mount Dradis::Plugins::Calculators::DREAD::Engine => '/calculators/', as: :dread_calculator
+        mount Dradis::Plugins::Calculators::DREAD::Engine => '/', as: :dread_calculator
       end
     end
 
