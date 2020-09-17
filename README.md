@@ -6,7 +6,7 @@ This simple addon adds a new page under `/calculators/dread` for you to perform 
 
 DREAD stands for (D)amage, (R)eproducibility, (E)xploitability, (A)ffected users, (D)iscoverability and is a common risk assessment model [introduced by Microsoft](http://blogs.msdn.com/b/david_leblanc/archive/2007/08/13/dreadful.aspx).
 
-The add-on requires [Dradis CE](https://dradisframework.org/) > 3.0, or [Dradis Pro](https://dradisframework.com/pro/).
+The add-on requires [Dradis CE](https://dradisframework.com/) > 3.0, or [Dradis Pro](https://dradisframework.com/pro/).
 
 
 ## Install
