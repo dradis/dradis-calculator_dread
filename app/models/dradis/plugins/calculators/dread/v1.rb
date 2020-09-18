@@ -13,7 +13,7 @@ module Dradis::Plugins::Calculators::DREAD
       ThreatAgent
     }.freeze
 
-    FIELDS = FIELD_NAMES.map {|name| "DREAD.#{name}".freeze }.freeze
+    FIELDS = FIELD_NAMES.map { |name| "DREAD.#{name}".freeze }.freeze
     VECTOR_REGEXP = /DREAD:1.0\/D:\d\/A:\d\/R:\d\/E:\d\/DI:\d/.freeze
   end
 end

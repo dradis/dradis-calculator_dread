@@ -10,14 +10,12 @@
     threat     = $("input[name='disc']:checked").data('agent')
     likelihood = (repro + exploit + disc) / 3
 
-
     dread        = (impact + likelihood) / 2
     dread_vector = "DREAD:1.0/D:#{damage}/A:#{affected}/R:#{repro}/E:#{exploit}/DI:#{disc}"
 
     impact_fixed     = DREADCalculator._fix(impact)
     likelihood_fixed = DREADCalculator._fix(likelihood)
     dread_fixed      = DREADCalculator._fix(dread)
-
 
     $('#impact-score').text(impact_fixed)
     $('#likelihood-score').text(likelihood_fixed)
