@@ -1,0 +1,83 @@
+<% content_for :title, 'Edit DREAD score' %>
+
+<% content_for :sidebar do %>
+  <%= render 'issues/sidebar'%>
+<% end %>
+
+<div class="content-container">
+  <h4 class="header-underline">Edit DREAD Risk Scoring</h4>
+  <div id="issues_editor">
+    <div class="inner note-text-inner">
+
+      <%= simple_form_for [:dread, current_project, @issue], method: :patch do |f| %>
+
+        <ul class="nav nav-pills w-100" id="cvss-tabs">
+          <li class="nav-item">
+            <a href="#dread-edit-impact" data-toggle="pill" class="nav-link active">Impact: <span id="impact-score">0</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#dread-edit-likelihood" data-toggle="pill" class="nav-link">Likelihood: <span id="likelihood-score">0</span></a>
+          </li>
+          <li class="nav-item pull-right">
+            <a href="#dread-edit-result" data-toggle="pill" class="nav-link">Result: <span id="dread-score">0</span></a>
+          </li>
+        </ul>
+
+        <div class="tab-content mt-4">
+          <div class="tab-pane active" id="dread-edit-impact">
+            <%= render 'dradis/plugins/calculators/dread/base/impact' %>
+          </div>
+          <div class="tab-pane" id="dread-edit-likelihood">
+            <%= render 'dradis/plugins/calculators/dread/base/likelihood' %>
+          </div>
+
+          <div class="tab-pane" id="dread-edit-result">
+            <p class="lead text-center">DREAD = (Impact + Likelihood)/2</p>
+
+            <textarea class="form-control" name="dread_fields" rows="10" style="width:95%">#[DreadValue]#
+N/A
+
+
+#[Damage]#
+N/A
+
+
+#[AffectedSystems]#
+N/A
+
+
+#[Impact]#
+N/A
+
+
+#[Reproducibility]#
+N/A
+
+
+#[Discoverability]#
+N/A
+
+
+#[ThreatAgent]#
+N/A
+
+
+#[Exploitability]#
+N/A
+
+
+#[Likelihood]#
+N/A
+
+  </textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, nil, class: 'btn btn-primary' %> or
+          <%= link_to 'Cancel', main_app.project_issue_path(current_project, @issue), class: 'cancel-link' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
