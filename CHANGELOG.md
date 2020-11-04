@@ -1,6 +1,7 @@
 ## Dradis Framework 3.20 (MMM, 2020) ##
 
-* Integrate calculator in Issues view.
+*   Integrate calculator in Issues view.
+*   Use Bootstrap gem vs vendored assets.
 
 ## Dradis Framework 3.19 (September, 2020) ##
 
