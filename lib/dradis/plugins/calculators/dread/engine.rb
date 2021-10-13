@@ -6,6 +6,10 @@ module Dradis::Plugins::Calculators::DREAD
     provides :addon
     description 'Risk Calculators: DREAD'
 
+    addon_settings :calculator_dread do
+      settings.default_show = 1
+    end
+
     initializer 'calculator_dread.asset_precompile_paths' do |app|
       app.config.assets.precompile += [
         'dradis/plugins/calculators/dread/manifests/application.css',
