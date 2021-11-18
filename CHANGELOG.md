@@ -1,4 +1,4 @@
-v4.1.0 ([month] [YYYY])
+v4.1.0 (November 2021)
   - Settings: show/hide the calculator in the Issues view
 
 v4.0.0 (July 2021)
