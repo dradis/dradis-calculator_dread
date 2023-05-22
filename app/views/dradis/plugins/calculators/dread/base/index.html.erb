@@ -5,18 +5,18 @@
 <p class="lead">Use this page to calculate the <abbr title="Damage potential, Reproducibility, Exploitability, Affected Users, Discoverability">DREAD</abbr> score of a given finding.</p>
 
 <div class="row">
-  <div class="col-8">
+  <div class="col-lg-8 mb-5">
     <h2>Impact score: <span id="impact-score">0</span></h2>
     <%= render 'dradis/plugins/calculators/dread/base/impact' %>
 
-    <h2>Likelihood score: <span id="likelihood-score">0</span></h2>
+    <h2 class="mt-5">Likelihood score: <span id="likelihood-score">0</span></h2>
     <%= render 'dradis/plugins/calculators/dread/base/likelihood' %>
   </div>
 
-  <div class="col-4">
+  <div class="col-lg-4">
     <h2>DREAD score: <span id="dread-score">0</span></h2>
     <p class="lead text-center">DREAD = (Impact + Likelihood)/2</p>
-    <textarea class="form-control" name="dread_fields" rows="28" style="width:95%">#[DreadValue]#
+    <textarea class="form-control" name="dread_fields" rows="28">#[DreadValue]#
 N/A
 
 #[Damage]#
