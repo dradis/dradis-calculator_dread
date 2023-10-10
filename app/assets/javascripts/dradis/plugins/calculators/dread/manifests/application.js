@@ -1,4 +1,4 @@
 //= require jquery
-//= require turbolinks
+//= require turbo
 
 //= require dradis/plugins/calculators/dread/calculator

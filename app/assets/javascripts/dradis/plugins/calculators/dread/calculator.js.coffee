@@ -51,7 +51,7 @@
       input.toFixed(3)
 
 
-document.addEventListener "turbolinks:load", ->
+document.addEventListener "turbo:load", ->
   if $('[data-behavior~=dread-buttons]').length
     DREADCalculator.calculate()
     $('input[type=radio]').on 'change', DREADCalculator.calculate
