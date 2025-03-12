@@ -6,15 +6,11 @@ module Dradis::Plugins::Calculators::DREAD
     provides :addon
     description 'Risk Calculators: DREAD'
 
-    addon_settings :calculator_dread do
-      settings.default_show = 1
-    end
-
     initializer 'calculator_dread.asset_precompile_paths' do |app|
       app.config.assets.precompile += [
         'dradis/plugins/calculators/dread/manifests/application.css',
         'dradis/plugins/calculators/dread/manifests/application.js',
-        'dradis/plugins/calculators/dread/manifests/tylium.js'
+        'dradis/plugins/calculators/dread/manifests/hera.js'
       ]
     end
 
@@ -25,10 +21,14 @@ module Dradis::Plugins::Calculators::DREAD
     end
 
     initializer 'calculator_dread.mount_engine' do
-      Rails.application.routes.append do
-        mount Dradis::Plugins::Calculators::DREAD::Engine => '/', as: :dread_calculator
-      end
+        Rails.application.routes.append do
+          # Enabling/disabling integrations calls Rails.application.reload_routes! we need the enable
+          # check inside the block to ensure the routes can be re-enabled without a server restart
+          if Engine.enabled?
+            mount Engine => '/', as: :dread_calculator
+          end
+        end
+      # end
     end
-
   end
 end
