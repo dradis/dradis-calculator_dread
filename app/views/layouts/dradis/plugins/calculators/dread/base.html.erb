@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>DREAD Score Calculator | Dradis Framework</title>
-    <%= stylesheet_link_tag    'dradis/plugins/calculators/dread/manifests/application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'dradis/plugins/calculators/dread/manifests/application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'dradis/plugins/calculators/dread/manifests/application', media: 'all', 'data-turbo-track' => true %>
+    <%= javascript_include_tag 'dradis/plugins/calculators/dread/manifests/application', 'data-turbo-track' => true %>
     <%= csrf_meta_tags %>
+    <%= javascript_importmap_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -14,7 +15,7 @@
         <a href="javascript:void(0)" class="navbar-brand">DREAD score calculator</a>
         <ul class="navbar-nav pull-right">
           <li class="nav-item">
-            <%= link_to main_app.root_path, class: 'nav-link', data: { turbolinks: false } do %>
+            <%= link_to main_app.root_path, class: 'nav-link', data: { turbo: false } do %>
               Back to the app  &rarr;
             <% end %>
           </li>
