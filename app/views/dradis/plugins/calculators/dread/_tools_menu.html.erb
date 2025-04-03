@@ -1,5 +1,7 @@
-<% unless current_user.role?(:contributor) %>
-  <li>
-    <%= link_to 'Risk Calculators - DREAD', dread_calculator.calculators_dread_path, class: 'dropdown-item', data: { turbo: false } %>
-  </li>
+<% if defined?(Dradis::Pro) %>
+  <% unless current_user.role?(:contributor) %>
+    <li>
+      <%= link_to 'Risk Calculators - DREAD', dread_calculator.calculators_dread_path, class: 'dropdown-item', data: { turbo: false } %>
+    </li>
+  <% end %>
 <% end %>
