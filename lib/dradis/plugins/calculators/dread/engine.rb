@@ -8,8 +8,8 @@ module Dradis::Plugins::Calculators::DREAD
 
     initializer 'calculator_dread.asset_precompile_paths' do |app|
       app.config.assets.precompile += [
-        'dradis/plugins/calculators/dread/manifests/application.css',
-        'dradis/plugins/calculators/dread/manifests/application.js',
+        'dradis/plugins/calculators/dread/base.css',
+        'dradis/plugins/calculators/dread/base.js',
         'dradis/plugins/calculators/dread/manifests/hera.js'
       ]
     end
