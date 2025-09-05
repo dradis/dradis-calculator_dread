@@ -3,6 +3,8 @@ module Dradis::Plugins::Calculators::DREAD
   class IssuesController < ::IssuesController
     before_action :set_dread_vector, only: :edit
 
+    skip_before_action :remove_unused_state_param
+
     def edit
     end
 
