@@ -1,4 +1,4 @@
-<% if defined?(Dradis::Pro) && !current_user.role?(:contributor) %>
+<% unless defined?(Dradis::Pro) && current_user.role?(:contributor) %>
   <li>
     <%= link_to 'Risk Calculators - DREAD', dread_calculator.calculators_dread_path, class: 'dropdown-item', data: { turbo: false } %>
   </li>
